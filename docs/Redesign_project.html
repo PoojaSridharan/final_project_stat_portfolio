@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PORTFOLIO - Redesign Visualization</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">PORTFOLIO</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">ABOUT ME</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">CONTACT ME</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./SourceCode.html"> 
+<span class="menu-text">SourceCode</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#redesign-1" id="toc-redesign-1" class="nav-link active" data-scroll-target="#redesign-1">Redesign 1:</a></li>
+  <li><a href="#redesign-2" id="toc-redesign-2" class="nav-link" data-scroll-target="#redesign-2">Redesign 2:</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Redesign Visualization</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="redesign-1" class="level3">
+<h3 class="anchored" data-anchor-id="redesign-1">Redesign 1:</h3>
+<p>The report used for redesign 1 is shown below</p>
+<p><img src="Redesign1/news_report_data.png" class="img-fluid"></p>
+<p>The above chart is supposed to show a comparison. Still, because the trends are so different in magnitude, digital-native publishers’ growth may be insignificant compared to the sharp decline of newspaper publishers.</p>
+<p>And even though it shows the trend in the change of employment of both the Newspaper publisher and Digital-native, it is not establish how much %change is happened over the year. It is significant to understand the change in trend. And hence redesigning this report to get better understanding of this data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Importing necessary modules</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(tidyverse))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(plotly))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Getting the types of news publisher data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">'Redesign1/news_report_data.csv'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df,<span class="at">n=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Year  Total Newspaper.publishers Broadcast.television Digital..native
+1 2008 114260                71070                28390            7400
+2 2009 104490                60770                28040            8090
+3 2010  98680                55260                28640            8090
+4 2011  97350                54050                28050            9520
+5 2012  95770                51430                27830           10750
+  Radio.broadcasting Cable.television
+1               4570             2830
+2               4330             3260
+3               4100             2590
+4               3540             2190
+5               3610             2150</code></pre>
+</div>
+</div>
+<p>From this data we will take only Year, Total, Newspaper.publishers, Digital..native to analyze the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">=</span> df[<span class="fu">c</span>(<span class="st">'Year'</span>,<span class="st">'Total'</span>,<span class="st">'Newspaper.publishers'</span>,<span class="st">'Digital..native'</span>)]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Year  Total Newspaper.publishers Digital..native
+1 2008 114260                71070            7400
+2 2009 104490                60770            8090
+3 2010  98680                55260            8090
+4 2011  97350                54050            9520
+5 2012  95770                51430           10750
+6 2013  92240                48920           11250</code></pre>
+</div>
+</div>
+<p>Now gathering Newspaper.publishers and Digital..native under column Sector and its value under Employment so that creating graph for each sector would be easy for us</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_long <span class="ot">&lt;-</span> <span class="fu">gather</span>(df1, <span class="at">key =</span> <span class="st">"Sector"</span>, <span class="at">value =</span> <span class="st">"Employment"</span>, <span class="sc">-</span>Year, <span class="sc">-</span>Total)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Year  Total               Sector Employment
+1 2008 114260 Newspaper.publishers      71070
+2 2009 104490 Newspaper.publishers      60770
+3 2010  98680 Newspaper.publishers      55260
+4 2011  97350 Newspaper.publishers      54050
+5 2012  95770 Newspaper.publishers      51430
+6 2013  92240 Newspaper.publishers      48920</code></pre>
+</div>
+</div>
+<p>Now we try to analyze the trend between the two sectors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">=</span> <span class="fu">ggplot</span>(data_long,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.factor</span>(Year),<span class="at">y=</span>Employment,<span class="at">fill =</span> Sector))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>,<span class="at">position =</span> <span class="st">"dodge"</span>,<span class="at">width =</span> <span class="fl">0.75</span>)<span class="sc">+</span><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span><span class="fu">scale_x_discrete</span>()<span class="sc">+</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Newsroom employment in US for Newspaper Publisher vs Digital Native"</span>,<span class="at">x=</span><span class="st">"Year"</span>,<span class="at">y=</span><span class="st">"Employment"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(plot1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-959c591004f98e5a4308" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-959c591004f98e5a4308">{"x":{"data":[{"orientation":"v","width":[0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[0.8125,1.8125,2.8125,3.8125,4.8125,5.8125,6.8125,7.8125,8.8125,9.8125,10.8125,11.8125,12.8125],"y":[7400,8090,8090,9520,10750,11250,11180,11710,12830,13260,13470,16090,18030],"text":["as.factor(Year): 2008<br />Employment:  7400<br />Sector: Digital..native","as.factor(Year): 2009<br />Employment:  8090<br />Sector: Digital..native","as.factor(Year): 2010<br />Employment:  8090<br />Sector: Digital..native","as.factor(Year): 2011<br />Employment:  9520<br />Sector: Digital..native","as.factor(Year): 2012<br />Employment: 10750<br />Sector: Digital..native","as.factor(Year): 2013<br />Employment: 11250<br />Sector: Digital..native","as.factor(Year): 2014<br />Employment: 11180<br />Sector: Digital..native","as.factor(Year): 2015<br />Employment: 11710<br />Sector: Digital..native","as.factor(Year): 2016<br />Employment: 12830<br />Sector: Digital..native","as.factor(Year): 2017<br />Employment: 13260<br />Sector: Digital..native","as.factor(Year): 2018<br />Employment: 13470<br />Sector: Digital..native","as.factor(Year): 2019<br />Employment: 16090<br />Sector: Digital..native","as.factor(Year): 2020<br />Employment: 18030<br />Sector: Digital..native"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Digital..native","legendgroup":"Digital..native","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[1.1875,2.1875,3.1875,4.1875,5.1875,6.1875,7.1875,8.1875,9.1875,10.1875,11.1875,12.1875,13.1875],"y":[71070,60770,55260,54050,51430,48920,46310,44120,42450,39210,37900,34950,30820],"text":["as.factor(Year): 2008<br />Employment: 71070<br />Sector: Newspaper.publishers","as.factor(Year): 2009<br />Employment: 60770<br />Sector: Newspaper.publishers","as.factor(Year): 2010<br />Employment: 55260<br />Sector: Newspaper.publishers","as.factor(Year): 2011<br />Employment: 54050<br />Sector: Newspaper.publishers","as.factor(Year): 2012<br />Employment: 51430<br />Sector: Newspaper.publishers","as.factor(Year): 2013<br />Employment: 48920<br />Sector: Newspaper.publishers","as.factor(Year): 2014<br />Employment: 46310<br />Sector: Newspaper.publishers","as.factor(Year): 2015<br />Employment: 44120<br />Sector: Newspaper.publishers","as.factor(Year): 2016<br />Employment: 42450<br />Sector: Newspaper.publishers","as.factor(Year): 2017<br />Employment: 39210<br />Sector: Newspaper.publishers","as.factor(Year): 2018<br />Employment: 37900<br />Sector: Newspaper.publishers","as.factor(Year): 2019<br />Employment: 34950<br />Sector: Newspaper.publishers","as.factor(Year): 2020<br />Employment: 30820<br />Sector: Newspaper.publishers"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Newspaper.publishers","legendgroup":"Newspaper.publishers","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":51.872146118721474,"l":54.794520547945211},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Newsroom employment in US for Newspaper Publisher vs Digital Native","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,13.6],"tickmode":"array","ticktext":["2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13],"categoryorder":"array","categoryarray":["2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-90,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Year","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-3553.5,74623.5],"tickmode":"array","ticktext":["0","20000","40000","60000"],"tickvals":[0,20000,40000.000000000007,60000],"categoryorder":"array","categoryarray":["0","20000","40000","60000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Employment","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Sector","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"42406f272394":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"42406f272394","visdat":{"42406f272394":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>From this graph we can able to see the change in trends for both the fields. Now try to analyze it a bit more.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Table that contains %change in their employment from previous year</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>data_long <span class="ot">&lt;-</span> data_long <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Sector, Year) <span class="sc">%&gt;%</span> <span class="co"># Sort by sector and year</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sector) <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Percentage_Change =</span> (Employment <span class="sc">-</span> <span class="fu">lag</span>(Employment)) <span class="sc">/</span> <span class="fu">lag</span>(Employment) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot2<span class="ot">=</span><span class="fu">ggplot</span>(data_long,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.factor</span>(Year),<span class="at">y=</span><span class="fu">round</span>(Percentage_Change,<span class="dv">2</span>),<span class="at">fill=</span>Sector))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>,<span class="at">position=</span><span class="st">"dodge"</span>,<span class="at">width=</span><span class="fl">0.75</span>)<span class="sc">+</span><span class="fu">scale_x_discrete</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"% Change of the Sectors in the trend over years"</span>,<span class="at">x=</span><span class="st">"Year"</span>,<span class="at">y=</span><span class="st">"Percentage Change"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(plot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-f77bb4fe9ad9f9b7bc12" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f77bb4fe9ad9f9b7bc12">{"x":{"data":[{"orientation":"v","width":[0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375],"base":[null,0,0,0,0,0,-0.62,0,0,0,0,0,0],"x":[0.8125,1.8125,2.8125,3.8125,4.8125,5.8125,6.8125,7.8125,8.8125,9.8125,10.8125,11.8125,12.8125],"y":[null,9.3200000000000003,0,17.68,12.92,4.6500000000000004,0.62,4.7400000000000002,9.5600000000000005,3.3500000000000001,1.5800000000000001,19.449999999999999,12.06],"text":["as.factor(Year): 2008<br />round(Percentage_Change, 2):    NA<br />Sector: Digital..native","as.factor(Year): 2009<br />round(Percentage_Change, 2):  9.32<br />Sector: Digital..native","as.factor(Year): 2010<br />round(Percentage_Change, 2):  0.00<br />Sector: Digital..native","as.factor(Year): 2011<br />round(Percentage_Change, 2): 17.68<br />Sector: Digital..native","as.factor(Year): 2012<br />round(Percentage_Change, 2): 12.92<br />Sector: Digital..native","as.factor(Year): 2013<br />round(Percentage_Change, 2):  4.65<br />Sector: Digital..native","as.factor(Year): 2014<br />round(Percentage_Change, 2):  0.62<br />Sector: Digital..native","as.factor(Year): 2015<br />round(Percentage_Change, 2):  4.74<br />Sector: Digital..native","as.factor(Year): 2016<br />round(Percentage_Change, 2):  9.56<br />Sector: Digital..native","as.factor(Year): 2017<br />round(Percentage_Change, 2):  3.35<br />Sector: Digital..native","as.factor(Year): 2018<br />round(Percentage_Change, 2):  1.58<br />Sector: Digital..native","as.factor(Year): 2019<br />round(Percentage_Change, 2): 19.45<br />Sector: Digital..native","as.factor(Year): 2020<br />round(Percentage_Change, 2): 12.06<br />Sector: Digital..native"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Digital..native","legendgroup":"Digital..native","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375,0.375],"base":[null,-14.49,-9.0700000000000003,-2.1899999999999999,-4.8499999999999996,-4.8799999999999999,-5.3399999999999999,-4.7300000000000004,-3.79,-7.6299999999999999,-3.3399999999999999,-7.7800000000000002,-11.82],"x":[1.1875,2.1875,3.1875,4.1875,5.1875,6.1875,7.1875,8.1875,9.1875,10.1875,11.1875,12.1875,13.1875],"y":[null,14.49,9.0700000000000003,2.1899999999999999,4.8499999999999996,4.8799999999999999,5.3399999999999999,4.7300000000000004,3.79,7.6299999999999999,3.3399999999999999,7.7800000000000002,11.82],"text":["as.factor(Year): 2008<br />round(Percentage_Change, 2):    NA<br />Sector: Newspaper.publishers","as.factor(Year): 2009<br />round(Percentage_Change, 2): 14.49<br />Sector: Newspaper.publishers","as.factor(Year): 2010<br />round(Percentage_Change, 2):  9.07<br />Sector: Newspaper.publishers","as.factor(Year): 2011<br />round(Percentage_Change, 2):  2.19<br />Sector: Newspaper.publishers","as.factor(Year): 2012<br />round(Percentage_Change, 2):  4.85<br />Sector: Newspaper.publishers","as.factor(Year): 2013<br />round(Percentage_Change, 2):  4.88<br />Sector: Newspaper.publishers","as.factor(Year): 2014<br />round(Percentage_Change, 2):  5.34<br />Sector: Newspaper.publishers","as.factor(Year): 2015<br />round(Percentage_Change, 2):  4.73<br />Sector: Newspaper.publishers","as.factor(Year): 2016<br />round(Percentage_Change, 2):  3.79<br />Sector: Newspaper.publishers","as.factor(Year): 2017<br />round(Percentage_Change, 2):  7.63<br />Sector: Newspaper.publishers","as.factor(Year): 2018<br />round(Percentage_Change, 2):  3.34<br />Sector: Newspaper.publishers","as.factor(Year): 2019<br />round(Percentage_Change, 2):  7.78<br />Sector: Newspaper.publishers","as.factor(Year): 2020<br />round(Percentage_Change, 2): 11.82<br />Sector: Newspaper.publishers"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Newspaper.publishers","legendgroup":"Newspaper.publishers","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":51.872146118721474,"l":43.105022831050235},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"% Change of the Sectors in the trend over years","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,13.6],"tickmode":"array","ticktext":["2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13],"categoryorder":"array","categoryarray":["2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-90,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Year","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-16.187000000000001,21.146999999999998],"tickmode":"array","ticktext":["-10","0","10","20"],"tickvals":[-10,0,10,19.999999999999996],"categoryorder":"array","categoryarray":["-10","0","10","20"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Percentage Change","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Sector","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"42404b1a7d89":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"42404b1a7d89","visdat":{"42404b1a7d89":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>From this graph we can able to understand that the newspaper publisher started to decrease drastically with -14.49% in ther year of 2009 and kept on decreasing whereas for digital native the increase percentage starts with 9.32% and in the year of 2014 it decreased a bit of -0.62% after that it starts to grow till then.</p>
+<p>And now we analyze the data a bit more to understand how much employment each sector has compared to overall sector employment.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Getting percentage value of each sectors}</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Percent_of_newspaper_publisher <span class="ot">=</span> df<span class="sc">$</span>Newspaper.publishers<span class="sc">/</span>df<span class="sc">$</span>Total</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Percent_of_digital_native <span class="ot">=</span> df<span class="sc">$</span>Digital..native<span class="sc">/</span>df<span class="sc">$</span>Total</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Percent_of_other_sector <span class="ot">=</span> (df<span class="sc">$</span>Broadcast.television <span class="sc">+</span> df<span class="sc">$</span>Radio.broadcasting <span class="sc">+</span> df<span class="sc">$</span>Cable.television)<span class="sc">/</span>df<span class="sc">$</span>Total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sector_percent_data <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Percent_of_newspaper_publisher,Percent_of_digital_native,Percent_of_other_sector),<span class="at">names_to =</span> <span class="st">"Sector"</span>,<span class="at">values_to =</span> <span class="st">'Percentage'</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Year,Sector,Percentage)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sector_percent_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+   Year Sector                         Percentage
+  &lt;int&gt; &lt;chr&gt;                               &lt;dbl&gt;
+1  2008 Percent_of_newspaper_publisher     0.622 
+2  2008 Percent_of_digital_native          0.0648
+3  2008 Percent_of_other_sector            0.313 
+4  2009 Percent_of_newspaper_publisher     0.582 
+5  2009 Percent_of_digital_native          0.0774
+6  2009 Percent_of_other_sector            0.341 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot3<span class="ot">=</span><span class="fu">ggplot</span>(sector_percent_data,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.factor</span>(Year),<span class="at">y=</span>Percentage,<span class="at">fill =</span> Sector))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(Percentage,<span class="dv">2</span>)), <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>),<span class="at">angle =</span> <span class="dv">90</span>)<span class="sc">+</span><span class="fu">scale_x_discrete</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"% of employment of the Sectors over years"</span>,<span class="at">x=</span><span class="st">"Year"</span>,<span class="at">y=</span><span class="st">"Percentage of Employment"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plot3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Redesign_project_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the above graph, we can able to witness that in the year 2008 employment of newspaper publishers is 10 times more than digital native employment. But as time passes we can see a simultaneous change in both the trends in the year of 2020 newspaper publisher employment is 36% and digital native employment is 21%</p>
+<section id="comment" class="level4">
+<h4 class="anchored" data-anchor-id="comment">Comment:</h4>
+<p>From the initial report, we can able to witness the change in trend but not clear as it depicts the value only at the start and end, secondly even though we can see a sharp shift in both the trends, from the redesign we can able to understand further, how much %change happened for both the sector over the year and how much changes happened in these two sectors employment in the newsroom at the year 2008 and the year 2020.</p>
+<p>Hence these redesign helps to understand the change in trend a bit more clear.</p>
+</section>
+</section>
+<section id="redesign-2" class="level3">
+<h3 class="anchored" data-anchor-id="redesign-2">Redesign 2:</h3>
+<p>The report used for redesign 2 is shown below</p>
+<p><img src="Redesign2/Total_death.png" class="img-fluid" width="305"></p>
+<p>The original graph was a bar chart that displayed different countries and the number of COVID deaths in each country. The disadvantages of the original graph are you cannot tell which countries have more COVID deaths than others as well as having the bars horizontal makes it harder for the viewer to visualize.</p>
+<p>In addition, there was no labels making the graph not complete in a sense no x-axis and y-axis on the graph, labels would it make it much easier for the viewer to see.</p>
+<p>This visualization shows which countries had many COVID deaths compared to others, but currently this visualization makes it hard for the reader to see which country has the most total deaths from COVID.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Importing Packages</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(scales))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading Dataset</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>covid_total_deaths <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"Redesign2/COVID Analysis Total Deaths.csv"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(covid_total_deaths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Country Total.Deaths
+1  Argentina       130472
+2 Bangladesh        29445
+3    Belgium        33814
+4     Brazil       699276
+5   Bulgaria        38228
+6     Canada        51720</code></pre>
+</div>
+</div>
+<p>To improve the original visualization, a bar graph can be created in descending order to show which countries have the most COVID deaths. This bar graph would have an x-axis containing the country names and y-axis containing the total deaths. You will see the decline in COVID deaths as you move down the x-axis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Bar Plot Descending Re-Design</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>death_plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(covid_total_deaths, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Country, <span class="sc">-</span>Total.Deaths), <span class="at">y =</span> Total.Deaths)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"blue"</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Country"</span>, <span class="at">y =</span> <span class="st">"Total Deaths"</span>, <span class="at">title =</span> <span class="st">"Bar Graph For Total COVID Deaths By Country"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">decimal.mark =</span> <span class="st">"."</span>)) </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>death_plot1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Redesign_project_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From this graph you can able to see the decline in COVID deaths as you move down the x-axis.</p>
+<p>Another re-design that can be done is a scatter plot to also show the COVID deaths per country. This is better because instead of seeing many different bars you can see dots so that its easier to read. The x-axis would also be country name, and y-axis would be number of COVID deaths.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Scatter Plot Descending Re-Design</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>death_plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(covid_total_deaths, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Country, <span class="sc">-</span>Total.Deaths), <span class="at">y =</span> Total.Deaths)) <span class="sc">+</span>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Scatter Plot For Total COVID Deaths By Country"</span>, <span class="at">x =</span> <span class="st">"Country"</span>, <span class="at">y =</span> <span class="st">"Total Deaths"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(covid_total_deaths<span class="sc">$</span>Total.Deaths) <span class="sc">+</span> <span class="dv">1000</span>), <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">big.mark =</span> <span class="st">","</span>, <span class="at">decimal.mark =</span> <span class="st">"."</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>death_plot2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Redesign_project_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The scatter plot above shows COVID deaths by countries in descending order. As you can see the US has the most COVID deaths and Iraq with the least COVID deaths. China has the most COVID dosages given therefore their death rate is the least compared to other countries.</p>
+<section id="comment-1" class="level4">
+<h4 class="anchored" data-anchor-id="comment-1">Comment:</h4>
+<p>I gathered data for COVID deaths and decided to organize the data in descending order so it was easier to see which countries had more COVID deaths and the least COVID deaths. For the scatter plot we used geom_point so that we can show the scatter plot values on the graph and made the dots red. On the bar graph we used geom_bar to display bars for the COVID deaths in blue. Both re-designs show countries from most COVID deaths to least COVID deaths meaning it was organized in descending order by country.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

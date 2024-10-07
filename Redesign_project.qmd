@@ -1,0 +1,152 @@
+---
+title: "Redesign Visualization"
+format: html
+editor: visual
+image: redesign.png
+---
+
+### Redesign 1:
+
+The report used for redesign 1 is shown below
+
+![](Redesign1/news_report_data.png)
+
+The above chart is supposed to show a comparison. Still, because the trends are so different in magnitude, digital-native publishers' growth may be insignificant compared to the sharp decline of newspaper publishers.
+
+And even though it shows the trend in the change of employment of both the Newspaper publisher and Digital-native, it is not establish how much %change is happened over the year. It is significant to understand the change in trend. And hence redesigning this report to get better understanding of this data.
+
+```{r}
+#Importing necessary modules
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(plotly))
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(tidyr)
+```
+
+```{r}
+#Getting the types of news publisher data
+df = read.csv('Redesign1/news_report_data.csv')
+head(df,n=5)
+```
+
+From this data we will take only Year, Total, Newspaper.publishers, Digital..native to analyze the data.
+
+```{r}
+df1 = df[c('Year','Total','Newspaper.publishers','Digital..native')]
+head(df1)
+```
+
+Now gathering Newspaper.publishers and Digital..native under column Sector and its value under Employment so that creating graph for each sector would be easy for us
+
+```{r}
+data_long <- gather(df1, key = "Sector", value = "Employment", -Year, -Total)
+head(data_long)
+```
+
+Now we try to analyze the trend between the two sectors
+
+```{r}
+plot1 = ggplot(data_long,aes(x=as.factor(Year),y=Employment,fill = Sector))+geom_bar(stat = "identity",position = "dodge",width = 0.75)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+scale_x_discrete()+labs(title = "Newsroom employment in US for Newspaper Publisher vs Digital Native",x="Year",y="Employment")
+ggplotly(plot1)
+```
+
+From this graph we can able to see the change in trends for both the fields. Now try to analyze it a bit more.
+
+```{r}
+#Table that contains %change in their employment from previous year
+
+data_long <- data_long %>%
+  arrange(Sector, Year) %>% # Sort by sector and year
+  group_by(Sector) %>%
+  mutate(Percentage_Change = (Employment - lag(Employment)) / lag(Employment) * 100)
+```
+
+```{r}
+plot2=ggplot(data_long,aes(x=as.factor(Year),y=round(Percentage_Change,2),fill=Sector))+geom_bar(stat="identity",position="dodge",width=0.75)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% Change of the Sectors in the trend over years",x="Year",y="Percentage Change")
+ggplotly(plot2)
+```
+
+From this graph we can able to understand that the newspaper publisher started to decrease drastically with -14.49% in ther year of 2009 and kept on decreasing whereas for digital native the increase percentage starts with 9.32% and in the year of 2014 it decreased a bit of -0.62% after that it starts to grow till then.
+
+And now we analyze the data a bit more to understand how much employment each sector has compared to overall sector employment.
+
+```{r}
+#Getting percentage value of each sectors}
+df$Percent_of_newspaper_publisher = df$Newspaper.publishers/df$Total
+df$Percent_of_digital_native = df$Digital..native/df$Total
+df$Percent_of_other_sector = (df$Broadcast.television + df$Radio.broadcasting + df$Cable.television)/df$Total
+```
+
+```{r}
+sector_percent_data <- df %>% pivot_longer(cols = c(Percent_of_newspaper_publisher,Percent_of_digital_native,Percent_of_other_sector),names_to = "Sector",values_to = 'Percentage') %>% select(Year,Sector,Percentage)
+head(sector_percent_data)
+```
+
+```{r}
+plot3=ggplot(sector_percent_data,aes(x=as.factor(Year),y=Percentage,fill = Sector))+geom_bar(stat = "identity")+geom_text(aes(label = round(Percentage,2)), position = position_stack(vjust = 0.5),angle = 90)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% of employment of the Sectors over years",x="Year",y="Percentage of Employment")
+plot3
+```
+
+From the above graph, we can able to witness that in the year 2008 employment of newspaper publishers is 10 times more than digital native employment. But as time passes we can see a simultaneous change in both the trends in the year of 2020 newspaper publisher employment is 36% and digital native employment is 21%
+
+#### Comment:
+
+From the initial report, we can able to witness the change in trend but not clear as it depicts the value only at the start and end, secondly even though we can see a sharp shift in both the trends, from the redesign we can able to understand further, how much %change happened for both the sector over the year and how much changes happened in these two sectors employment in the newsroom at the year 2008 and the year 2020.
+
+Hence these redesign helps to understand the change in trend a bit more clear.
+
+### Redesign 2:
+
+The report used for redesign 2 is shown below
+
+![](Redesign2/Total_death.png){width="305"}
+
+The original graph was a bar chart that displayed different countries and the number of COVID deaths in each country. The disadvantages of the original graph are you cannot tell which countries have more COVID deaths than others as well as having the bars horizontal makes it harder for the viewer to visualize.
+
+In addition, there was no labels making the graph not complete in a sense no x-axis and y-axis on the graph, labels would it make it much easier for the viewer to see.
+
+This visualization shows which countries had many COVID deaths compared to others, but currently this visualization makes it hard for the reader to see which country has the most total deaths from COVID.
+
+```{r}
+#Importing Packages
+suppressPackageStartupMessages(library(scales))
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(tidyr)
+library(dplyr)
+library(scales)
+
+```
+
+```{r}
+#Reading Dataset
+covid_total_deaths = read.csv("Redesign2/COVID Analysis Total Deaths.csv")
+head(covid_total_deaths)
+```
+
+To improve the original visualization, a bar graph can be created in descending order to show which countries have the most COVID deaths. This bar graph would have an x-axis containing the country names and y-axis containing the total deaths. You will see the decline in COVID deaths as you move down the x-axis.
+
+```{r}
+#Bar Plot Descending Re-Design
+death_plot1 <- ggplot(covid_total_deaths, aes(x = reorder(Country, -Total.Deaths), y = Total.Deaths)) + geom_bar(stat = "identity", fill = "blue") + labs(x = "Country", y = "Total Deaths", title = "Bar Graph For Total COVID Deaths By Country") + theme_minimal() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + scale_y_continuous(labels = label_number(big.mark = ",", decimal.mark = ".")) 
+death_plot1
+```
+
+From this graph you can able to see the decline in COVID deaths as you move down the x-axis.
+
+Another re-design that can be done is a scatter plot to also show the COVID deaths per country. This is better because instead of seeing many different bars you can see dots so that its easier to read. The x-axis would also be country name, and y-axis would be number of COVID deaths.
+
+```{r}
+#Scatter Plot Descending Re-Design
+death_plot2 <- ggplot(covid_total_deaths, aes(x = reorder(Country, -Total.Deaths), y = Total.Deaths)) +  geom_point(shape = 21, fill = "red", color = "black", size = 3) + labs(title = "Scatter Plot For Total COVID Deaths By Country", x = "Country", y = "Total Deaths") + theme_minimal() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + scale_y_continuous(limits = c(0, max(covid_total_deaths$Total.Deaths) + 1000), labels = label_number(big.mark = ",", decimal.mark = "."))
+death_plot2
+```
+
+The scatter plot above shows COVID deaths by countries in descending order. As you can see the US has the most COVID deaths and Iraq with the least COVID deaths. China has the most COVID dosages given therefore their death rate is the least compared to other countries.
+
+#### Comment:
+
+I gathered data for COVID deaths and decided to organize the data in descending order so it was easier to see which countries had more COVID deaths and the least COVID deaths. For the scatter plot we used geom_point so that we can show the scatter plot values on the graph and made the dots red. On the bar graph we used geom_bar to display bars for the COVID deaths in blue. Both re-designs show countries from most COVID deaths to least COVID deaths meaning it was organized in descending order by country.

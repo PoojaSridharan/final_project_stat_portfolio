@@ -1,0 +1,62 @@
+---
+title: "Redesign1"
+---
+
+This page contains the source code of Redesign 1
+
+```{r}
+#Importing necessary modules
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(tidyr)
+```
+
+```{r}
+#Getting the types of news publisher data
+df = read.csv('Redesign1/news_report_data.csv')
+head(df,n=5)
+```
+
+```{r}
+df1 = df[c('Year','Total','Newspaper.publishers','Digital..native')]
+head(df1)
+```
+
+```{r}
+data_long <- gather(df1, key = "Sector", value = "Employment", -Year, -Total)
+head(data_long)
+```
+
+```{r}
+plot1 = ggplot(data_long,aes(x=as.factor(Year),y=Employment,fill = Sector))+geom_bar(stat = "identity",position = "dodge",width = 0.75)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+scale_x_discrete()+labs(title = "Newsroom employment in US for Newspaper Publisher vs Digital Native",x="Year",y="Employment")
+ggplotly(plot1)
+```
+
+```{r}
+data_long <- data_long %>%
+  arrange(Sector, Year) %>% # Sort by sector and year
+  group_by(Sector) %>%
+  mutate(Percentage_Change = (Employment - lag(Employment)) / lag(Employment) * 100)
+```
+
+```{r}
+plot2=ggplot(data_long,aes(x=as.factor(Year),y=round(Percentage_Change,2),fill=Sector))+geom_bar(stat="identity",position="dodge",width=0.75)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% Change of the Sectors in the trend over years",x="Year",y="Percentage Change")
+ggplotly(plot2)
+```
+
+```{r}
+#Getting percentage value of each sectors}
+df$Percent_of_newspaper_publisher = df$Newspaper.publishers/df$Total
+df$Percent_of_digital_native = df$Digital..native/df$Total
+df$Percent_of_other_sector = (df$Broadcast.television + df$Radio.broadcasting + df$Cable.television)/df$Total
+```
+
+```{r}
+sector_percent_data <- df %>% pivot_longer(cols = c(Percent_of_newspaper_publisher,Percent_of_digital_native,Percent_of_other_sector),names_to = "Sector",values_to = 'Percentage') %>% select(Year,Sector,Percentage)
+head(sector_percent_data)
+```
+
+```{r}
+ggplot(sector_percent_data,aes(x=as.factor(Year),y=Percentage,fill = Sector))+geom_bar(stat = "identity")+geom_text(aes(label = round(Percentage,2)), position = position_stack(vjust = 0.5),angle = 90)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% of employment of the Sectors over years",x="Year",y="Percentage of Employment")
+```

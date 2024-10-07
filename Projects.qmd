@@ -1,0 +1,12 @@
+---
+title: "Projects"
+listing: 
+  contents: 
+  - Redesign_project.qmd
+  - Project2.qmd
+  type: grid
+  categories: true
+  fields: [image,title]
+---
+
+This page will contain my list of projects

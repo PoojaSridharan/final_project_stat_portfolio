@@ -1,0 +1,33 @@
+---
+title: "Redesign2"
+---
+
+This page contains source code of Redesign 2
+
+```{r}
+#Importing Packages
+suppressPackageStartupMessages(library(scales))
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(tidyr)
+library(dplyr)
+library(scales)
+```
+
+```{r}
+#Reading Dataset
+covid_total_deaths = read.csv("Redesign2/COVID Analysis Total Deaths.csv")
+head(covid_total_deaths)
+```
+
+```{r}
+#Scatter Plot Descending Re-Design
+death_plot1 <- ggplot(covid_total_deaths, aes(x = reorder(Country, -Total.Deaths), y = Total.Deaths)) +  geom_point(shape = 21, fill = "red", color = "black", size = 3) + labs(title = "Scatter Plot For Total COVID Deaths By Country", x = "Country", y = "Total Deaths") + theme_minimal() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + scale_y_continuous(limits = c(0, max(covid_total_deaths$Total.Deaths) + 1000), labels = label_number(big.mark = ",", decimal.mark = "."))
+death_plot1
+```
+
+```{r}
+death_plot2 <- ggplot(covid_total_deaths, aes(x = reorder(Country, -Total.Deaths), y = Total.Deaths)) + geom_bar(stat = "identity", fill = "blue") + labs(x = "Country", y = "Total Deaths", title = "Bar Graph For Total COVID Deaths By Country") + theme_minimal() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + scale_y_continuous(labels = label_number(big.mark = ",", decimal.mark = ".")) 
+death_plot2
+```
