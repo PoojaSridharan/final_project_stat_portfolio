@@ -11,9 +11,13 @@ The report used for redesign 1 is shown below
 
 ![](Redesign1/news_report_data.png)
 
-The above chart is supposed to show a comparison. Still, because the trends are so different in magnitude, digital-native publishers' growth may be insignificant compared to the sharp decline of newspaper publishers.
+The above chart is supposed to show a comparison. Eventhough this plot shows change in trend overtime for both Newspaper publisher and Digital native, there are few backlogs present in the data.
 
-And even though it shows the trend in the change of employment of both the Newspaper publisher and Digital-native, it is not establish how much %change is happened over the year. It is significant to understand the change in trend. And hence redesigning this report to get better understanding of this data.
+1.  Only the starting and ending points are labelled, making it harder to track how the value changes over the 12 years. This limits the chart ability to provide detailed insights.
+
+2.  The design does not effectively highlight the key insight that while newspaper employment plummeted, digital-native employment steadily grew. The decline of one trend visually dominates, reducing the impact of the other.
+
+Hence redesigning the given report to understand the changing trend better.
 
 ```{r}
 #Importing necessary modules
@@ -48,11 +52,34 @@ head(data_long)
 Now we try to analyze the trend between the two sectors
 
 ```{r}
-plot1 = ggplot(data_long,aes(x=as.factor(Year),y=Employment,fill = Sector))+geom_bar(stat = "identity",position = "dodge",width = 0.75)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+scale_x_discrete()+labs(title = "Newsroom employment in US for Newspaper Publisher vs Digital Native",x="Year",y="Employment")
-ggplotly(plot1)
+plot1=ggplot(data_long, aes(x = as.factor(Year), y = Employment, color = Sector,label=Sector)) +
+  geom_segment(aes(xend = as.factor(Year), yend = 0), color = "black", size = 0.5) +  # Black horizontal lines
+  geom_point(size = 3) +  # Points for each sector and year above the line
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  scale_x_discrete() +
+  labs(title = "Newsroom Employment in US for Newspaper Publisher vs Digital Native",
+       x = "Year", y = "Employment")
+ggplotly(plot1,tooltip = c("y","label"))
 ```
 
-From this graph we can able to see the change in trends for both the fields. Now try to analyze it a bit more.
+From the above interactive chart we can able to see the change in employment for both the sectors.
+
+1.  Unlike the given plot, we can able to witness the change for every year.
+
+2.  Apart from that we can see the distance between both sectors reducing over time and it became very less in the year 2020 which shows the impact of the changing trends very clearly.\
+
+```{r}
+plot2 = ggplot(data_long,aes(x=as.factor(Year),y=Employment,fill = Sector,label=Sector))+geom_bar(stat = "identity",position = "dodge",width = 0.75)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+scale_x_discrete()+labs(title = "Newsroom employment in US for Newspaper Publisher vs Digital Native",x="Year",y="Employment")
+ggplotly(plot2,tooltip = c("y","label"))
+```
+
+Redesigned the same report with stacked bar graph.
+
+In this graph we can able to witness the length of digital native is very small when compared with Newspaper publisher in the year 2008 and we can able to see a sharp decreasing slope for newspaper publisher and increasing slope for digital native.
+
+Due to change in both the sectors over years we can able to see in the year 2020, the height difference between both the sectors is not much.
+
+Apart from redesigning the given plot, we have planned to analyze this report a bit more and try to understand how much percentage each sector changes every year.
 
 ```{r}
 #Table that contains %change in their employment from previous year
@@ -64,11 +91,11 @@ data_long <- data_long %>%
 ```
 
 ```{r}
-plot2=ggplot(data_long,aes(x=as.factor(Year),y=round(Percentage_Change,2),fill=Sector))+geom_bar(stat="identity",position="dodge",width=0.75)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% Change of the Sectors in the trend over years",x="Year",y="Percentage Change")
-ggplotly(plot2)
+plot3=ggplot(data_long,aes(x=as.factor(Year),y=round(Percentage_Change,2),fill=Sector))+geom_bar(stat="identity",position="dodge",width=0.75)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% Change of the Sectors in the trend over years",x="Year",y="Percentage Change")
+ggplotly(plot3)
 ```
 
-From this graph we can able to understand that the newspaper publisher started to decrease drastically with -14.49% in ther year of 2009 and kept on decreasing whereas for digital native the increase percentage starts with 9.32% and in the year of 2014 it decreased a bit of -0.62% after that it starts to grow till then.
+From this graph we can able to understand that the newspaper publisher started to decrease drastically with -14.49% in the year of 2009 and kept on decreasing whereas for digital native the increase percentage starts with 9.32% and in the year of 2014 it decreased a bit of -0.62% after that it starts to grow till then.
 
 And now we analyze the data a bit more to understand how much employment each sector has compared to overall sector employment.
 
@@ -85,8 +112,8 @@ head(sector_percent_data)
 ```
 
 ```{r}
-plot3=ggplot(sector_percent_data,aes(x=as.factor(Year),y=Percentage,fill = Sector))+geom_bar(stat = "identity")+geom_text(aes(label = round(Percentage,2)), position = position_stack(vjust = 0.5),angle = 90)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% of employment of the Sectors over years",x="Year",y="Percentage of Employment")
-plot3
+ggplot(sector_percent_data,aes(x=as.factor(Year),y=Percentage,fill = Sector))+geom_bar(stat = "identity")+geom_text(aes(label = round(Percentage,2)), position = position_stack(vjust = 0.5),angle = 90)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% of employment of the Sectors over years",x="Year",y="Percentage of Employment")
+
 ```
 
 From the above graph, we can able to witness that in the year 2008 employment of newspaper publishers is 10 times more than digital native employment. But as time passes we can see a simultaneous change in both the trends in the year of 2020 newspaper publisher employment is 36% and digital native employment is 21%

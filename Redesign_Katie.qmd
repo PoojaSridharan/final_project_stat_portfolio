@@ -1,5 +1,5 @@
 ---
-title: "Redesign2"
+title: "Redesign 2"
 ---
 
 This page contains source code of Redesign 2
@@ -7,6 +7,8 @@ This page contains source code of Redesign 2
 ```{r}
 #Importing Packages
 suppressPackageStartupMessages(library(scales))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(plotly))
 library(tidyverse)
 library(ggplot2)
 library(plotly)

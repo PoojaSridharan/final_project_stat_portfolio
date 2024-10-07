@@ -1,11 +1,13 @@
 ---
-title: "Redesign1"
+title: "Redesign 1"
 ---
 
 This page contains the source code of Redesign 1
 
 ```{r}
 #Importing necessary modules
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(plotly))
 library(tidyverse)
 library(ggplot2)
 library(plotly)
@@ -29,8 +31,20 @@ head(data_long)
 ```
 
 ```{r}
-plot1 = ggplot(data_long,aes(x=as.factor(Year),y=Employment,fill = Sector))+geom_bar(stat = "identity",position = "dodge",width = 0.75)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+scale_x_discrete()+labs(title = "Newsroom employment in US for Newspaper Publisher vs Digital Native",x="Year",y="Employment")
+plot1=ggplot(data_long, aes(x = as.factor(Year), y = Employment, color = Sector)) +
+  geom_segment(aes(xend = as.factor(Year), yend = 0), color = "black", size = 0.5) +  # Black horizontal lines
+  geom_point(size = 3) +  # Points for each sector and year above the line
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  scale_x_discrete() +
+  labs(title = "Newsroom Employment in US for Newspaper Publisher vs Digital Native",
+       x = "Year", y = "Employment")
 ggplotly(plot1)
+
+```
+
+```{r}
+plot2 = ggplot(data_long,aes(x=as.factor(Year),y=Employment,fill = Sector))+geom_bar(stat = "identity",position = "dodge",width = 0.75)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+scale_x_discrete()+labs(title = "Newsroom employment in US for Newspaper Publisher vs Digital Native",x="Year",y="Employment")
+ggplotly(plot2)
 ```
 
 ```{r}
@@ -41,7 +55,7 @@ data_long <- data_long %>%
 ```
 
 ```{r}
-plot2=ggplot(data_long,aes(x=as.factor(Year),y=round(Percentage_Change,2),fill=Sector))+geom_bar(stat="identity",position="dodge",width=0.75)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% Change of the Sectors in the trend over years",x="Year",y="Percentage Change")
+plot3=ggplot(data_long,aes(x=as.factor(Year),y=round(Percentage_Change,2),fill=Sector))+geom_bar(stat="identity",position="dodge",width=0.75)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% Change of the Sectors in the trend over years",x="Year",y="Percentage Change")
 ggplotly(plot2)
 ```
 

@@ -6,10 +6,13 @@ website:
   title: "PORTFOLIO"
   navbar:
     left:
-      - index.qmd
-      - contact.qmd
+      - text: "About"
+        file: index.qmd
+      - text: "Contact"
+        file: contact.qmd
       - Projects.qmd
-      - SourceCode.qmd
+      - text: "Source Code"
+        file: SourceCode.qmd
       
 
 format:
