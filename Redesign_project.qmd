@@ -32,21 +32,21 @@ library(tidyr)
 ```{r}
 #Getting the types of news publisher data
 df = read.csv('Redesign1/news_report_data.csv')
-head(df,n=5)
+
 ```
 
 From this data we will take only Year, Total, Newspaper.publishers, Digital..native to analyze the data.
 
 ```{r}
 df1 = df[c('Year','Total','Newspaper.publishers','Digital..native')]
-head(df1)
+
 ```
 
 Now gathering Newspaper.publishers and Digital..native under column Sector and its value under Employment so that creating graph for each sector would be easy for us
 
 ```{r}
 data_long <- gather(df1, key = "Sector", value = "Employment", -Year, -Total)
-head(data_long)
+
 ```
 
 Now we try to analyze the trend between the two sectors
@@ -91,8 +91,8 @@ data_long <- data_long %>%
 ```
 
 ```{r}
-plot3=ggplot(data_long,aes(x=as.factor(Year),y=round(Percentage_Change,2),fill=Sector))+geom_bar(stat="identity",position="dodge",width=0.75)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% Change of the Sectors in the trend over years",x="Year",y="Percentage Change")
-ggplotly(plot3)
+plot3=ggplot(data_long,aes(x=as.factor(Year),y=round(Percentage_Change,2),fill=Sector,label=Sector))+geom_bar(stat="identity",position="dodge",width=0.75)+scale_x_discrete()+theme(axis.text.x = element_text(angle = 90, vjust = 0.5))+labs(title = "% Change of the Sectors in the trend over years",x="Year",y="Percentage Change")
+ggplotly(plot3,tooltip = c("y","label"))
 ```
 
 From this graph we can able to understand that the newspaper publisher started to decrease drastically with -14.49% in the year of 2009 and kept on decreasing whereas for digital native the increase percentage starts with 9.32% and in the year of 2014 it decreased a bit of -0.62% after that it starts to grow till then.
@@ -108,7 +108,7 @@ df$Percent_of_other_sector = (df$Broadcast.television + df$Radio.broadcasting + 
 
 ```{r}
 sector_percent_data <- df %>% pivot_longer(cols = c(Percent_of_newspaper_publisher,Percent_of_digital_native,Percent_of_other_sector),names_to = "Sector",values_to = 'Percentage') %>% select(Year,Sector,Percentage)
-head(sector_percent_data)
+
 ```
 
 ```{r}
