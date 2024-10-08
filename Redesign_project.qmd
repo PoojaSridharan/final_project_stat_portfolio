@@ -177,3 +177,5 @@ The scatter plot above shows COVID deaths by countries in descending order. As y
 #### Comment:
 
 I gathered data for COVID deaths and decided to organize the data in descending order so it was easier to see which countries had more COVID deaths and the least COVID deaths. For the scatter plot we used geom_point so that we can show the scatter plot values on the graph and made the dots red. On the bar graph we used geom_bar to display bars for the COVID deaths in blue. Both re-designs show countries from most COVID deaths to least COVID deaths meaning it was organized in descending order by country.
+
+In conclusion, the next re-design that can be done for this COVID deaths dataset is a map visualization showing low and high concentration of COVID deaths per country. In order to complete this visualization, we will need to add latitude and longitude of the countries to accurately show and depict the data. Overall our re-design is much better than the original visualization since you can clearly tell which countries have more versus less COVID deaths.
