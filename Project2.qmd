@@ -166,29 +166,59 @@ Based on the high p-value, we fail to reject the null hypothesis. This suggests 
 
 **Advantages of LASSO Regression** 
 
--   Feature Selection  
--   Shrinks coefficients to exactly zero making it a more interpretable model 
--   Reduces Overfitting 
--   Prevent overfitting since it is penalizing large coefficients  
--   Handles Multicollinearity 
--   Multicollinearity is a high correlation between predictors and LASSO can handle it as it will only select one significant variable and shrink the others to zero 
+-   Feature Selection - shrinks coefficients to exactly zero making it a more interpretable model 
+
+```{=html}
+<!-- -->
+```
+-   Reduces Overfitting - prevents overfitting since it is penalizing large coefficients  
+
+```{=html}
+<!-- -->
+```
+-   Handles Multicollinearity - Multicollinearity is a high correlation between predictors and LASSO can handle it as it will only select one significant variable and shrink the others to zero 
 
 **Disadvantages of LASSO Regression** 
 
--   Bias in Estimates 
--   Since variables that have high coefficients shrink to zero it can introduce bias 
--   Exclusion of Relevant Variables 
--   Eliminating all coefficients that are not significant may not always be useful since it seems as if there is a weak association between the target variable it will be shrunk to zero 
--   Cannot Handle Non-Linear Relationships 
--   It is assumed that the predictors and response variables have a linear relationship making it harder to interpret the non-linear relationships 
+-   Bias in Estimates - since variables that have high coefficients shrink to zero it can introduce bias 
 
-Advantages of Chi-Squared Test 
+```{=html}
+<!-- -->
+```
+-   Exclusion of Relevant Variables - eliminating all coefficients that are not significant may not always be useful since it seems as if there is a weak association between the target variable it will be shrunk to zero 
 
--   Simple and Easy to Use 
--   Very straightforward and easy to compute specifically for small and medium datasets 
--   Handles Large Sample Sizes 
--   Provides reliable results with large sample sizes 
--   Insightful for Categorical Data
+```{=html}
+<!-- -->
+```
+-   Cannot Handle Non-Linear Relationships - It is assumed that the predictors and response variables have a linear relationship making it harder to interpret the non-linear relationships 
+
+**Advantages of Chi-Squared Test** 
+
+-   Simple and Easy to Use - very straightforward and easy to compute specifically for small and medium datasets 
+
+```{=html}
+<!-- -->
+```
+-   Handles Large Sample Sizes - Provides reliable results with large sample sizes 
+
+```{=html}
+<!-- -->
+```
+-   Insightful for Categorical Data - Chi-Squared tests are good and useful when exploring relationships between categorical variables in contingency tables 
+
+**Disadvantages of Chi-Squared Test** 
+
+-   Sensitive to Sample Size - For large samples, even small differences appear significant. For small samples, it might have the capability to detect significant relationships 
+
+```{=html}
+<!-- -->
+```
+-   Cannot Handle Small Expected Frequencies - For this test to be complete there needs to be enough observations for each category meaning if there is a contingency table with low frequencies it can lead to unreliable results 
+
+```{=html}
+<!-- -->
+```
+-   Overlooks Non-Linear Relationships - Chi-Squared test is not designed to interpret non-linear relationships or complex factors between variables 
 
 ## Reference:
 
