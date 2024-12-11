@@ -1,0 +1,303 @@
+---
+title: "Final_Project"
+format: html
+editor: visual
+---
+
+## Final Project Source Code
+
+```{r}
+#Importing Libraries
+suppressPackageStartupMessages(library(glmnet))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(caret))
+suppressPackageStartupMessages(library(dplyr))
+library(caret)
+library(dplyr)
+library(ggplot2)
+library(glmnet)
+```
+
+## 1 How does patient information like length of stay, age, gender, medical conditions and admission type impact medical billing amounts?
+
+```{r}
+#Reading Health Care Dataset
+Health_Care <- read.csv("final_project/updated_healthcare_dataset.csv")
+head(Health_Care)
+str(Health_Care)
+summary(Health_Care)
+```
+
+```{r}
+#Removing Variables
+Health_Care_Updated <- Health_Care %>% select(-c("Date_of_Admission", "Discharge_Date", "Hospital", "Insurance_Provider", "Name"))
+head(Health_Care_Updated)
+```
+
+```{r}
+#Converting Categorical Variables Into Factors
+Health_Care_Updated$Admission_Type <- as.factor(Health_Care_Updated$Admission_Type)
+Health_Care_Updated$Blood_Type <- as.factor(Health_Care_Updated$Blood_Type)
+Health_Care_Updated$Gender <- as.factor(Health_Care_Updated$Gender)
+Health_Care_Updated$Medical_Condition <- as.factor(Health_Care_Updated$Medical_Condition)
+Health_Care_Updated$Medication <- as.factor(Health_Care_Updated$Medication)
+Health_Care_Updated$Test_Results <- as.factor(Health_Care_Updated$Test_Results)
+str(Health_Care_Updated)
+```
+
+```{r}
+#Create Dummy Variables For Categorical Data
+Health_Care_Dummy_Model <- dummyVars(~ Admission_Type + Age + Gender + Blood_Type + Gender + Medical_Condition + Medication + Test_Results, data = Health_Care_Updated)
+head(Health_Care_Dummy_Model)
+
+```
+
+```{r}
+#Transform Data to Dummy Variables
+Health_Care_Transform <- as.matrix(predict(Health_Care_Dummy_Model, newdata = Health_Care_Updated))
+class(Health_Care_Transform)
+head(Health_Care_Transform)
+```
+
+```{r}
+#Combine Dummy Variables With The Billing_Amount
+Health_Care_Model_Data <- cbind(Health_Care_Transform, Billing_Amount = Health_Care_Updated$Billing_Amount, Health_Care_Updated$Age, Health_Care_Updated$Length_Of_Stay)
+head(Health_Care_Model_Data)
+```
+
+```{r}
+#Split Data Into Predictors (X) and Response Variable (y)
+Health_Care_X <- as.matrix(Health_Care_Model_Data[, -ncol(Health_Care_Model_Data)])  
+Health_Care_Y <- Health_Care_Model_Data[, "Billing_Amount"]
+```
+
+```{r}
+#Fit LASSO Regression Model
+Health_Care_LASSO_Model <- cv.glmnet(Health_Care_X, Health_Care_Y , alpha = 1, standardize = TRUE)
+head(Health_Care_LASSO_Model)
+```
+
+```{r}
+#Showing Lambda Values
+Health_Care_Lambda <- Health_Care_LASSO_Model$lambda
+Health_Care_Lambda
+```
+
+```{r}
+#Best Lambda
+Health_Care_Best_Lambda <- Health_Care_LASSO_Model$lambda.min 
+print(paste("Optimal Lambda:", Health_Care_Best_Lambda))
+```
+
+```{r}
+#Extract Coefficients At The Optimal Lambda
+Health_Care_LASSO_Coefficients <- coef(Health_Care_LASSO_Model, s = "lambda.min")
+print(Health_Care_LASSO_Coefficients)
+```
+
+```{r}
+#Fit Final LASSO Model
+Health_Care_LASSO_Final_Model <- glmnet(Health_Care_X, Health_Care_Y, alpha = 1, lambda = Health_Care_Best_Lambda)
+Health_Care_LASSO_Final_Model
+```
+
+```{r}
+#Display Coefficients
+print(coef(Health_Care_LASSO_Final_Model))
+```
+
+```{r}
+#Extract Non-Zero Coefficients
+Health_Care_Nonzero_Coefficients <- coef(Health_Care_LASSO_Final_Model, s = Health_Care_Best_Lambda)
+Health_Care_Nonzero_Coefficients <- as.matrix(Health_Care_Nonzero_Coefficients)
+Health_Care_Nonzero_Coefficients <- Health_Care_Nonzero_Coefficients[Health_Care_Nonzero_Coefficients != 0, , drop = FALSE]
+Health_Care_Nonzero_Coefficients
+
+#Display Non-Zero Coefficients
+print(Health_Care_Nonzero_Coefficients)
+```
+
+```{r}
+#Predict Values Using The Final Model
+Health_Care_Predictions <- predict(Health_Care_LASSO_Final_Model, newx = Health_Care_X, s = Health_Care_Best_Lambda)
+head(Health_Care_Predictions)
+```
+
+```{r}
+#Calculate Residuals
+Health_Care_Residuals <- Health_Care_Y - Health_Care_Predictions
+head(Health_Care_Residuals)
+
+#Calculate Mean Squared Error (MSE)
+Health_Care_MSE <- mean(Health_Care_Residuals^2)
+print(paste("Mean Squared Error:", Health_Care_MSE))
+```
+
+```{r}
+#Calculate Total Sum of Squares (TSS)
+Health_Care_TSS <- sum((Health_Care_Y - mean(Health_Care_Y))^2)
+Health_Care_TSS 
+
+#Calculate Residual Sum of Squares (RSS)
+Health_Care_RSS <- sum(Health_Care_Residuals^2)
+Health_Care_RSS 
+```
+
+```{r}
+#Calculate R-Squared
+Health_Care_RSquared <- 1 - (Health_Care_RSS/Health_Care_TSS)
+print(paste("R-Squared:", Health_Care_RSquared))
+
+#Showing All Statistics
+Health_Care_Results <- data.frame(Metric = c("MSE", "TSS", "RSS", "R-Squared"), Value = c(Health_Care_MSE, Health_Care_TSS, Health_Care_RSS, Health_Care_RSquared))
+Health_Care_Results
+```
+
+```{r}
+#Plot Coefficient Paths
+plot(Health_Care_LASSO_Model, xvar = "lambda", label = TRUE, main = "LASSO Coefficient Paths")
+```
+
+## 2. How hospital stays (length of stay and medical condition) in different hospitals influence billing amounts for patients?
+
+```{r}
+# selecting the required column for the purpose
+q2_data <- Health_Care %>%
+  select(Hospital, Medical_Condition, Length_Of_Stay, Billing_Amount)
+head(q2_data)
+
+# Calculate average billing per hospital
+# reason - as there can be several billing amount for the same hospital
+
+avg_billing <- aggregate(Billing_Amount ~ Hospital, q2_data, mean)
+head(avg_billing)
+```
+
+```{r}
+# Group hospitals into quantiles (Low, Medium, High, Very High)
+# as there are several hundreds of hospitals, we are grouping it as low, medium, high
+# create a categorical variable = 
+avg_billing$Billing_Group <- cut(
+  avg_billing$Billing_Amount, 
+  breaks = quantile(avg_billing$Billing_Amount, probs = seq(0, 1, 0.25)), 
+  labels = c("Low", "Medium", "High", "Very High"), 
+  include.lowest = TRUE
+)
+
+# Merge billing groups back into the main dataset
+q2_data <- merge(q2_data, avg_billing[, c("Hospital", "Billing_Group")], by = "Hospital")
+head(q2_data)
+```
+
+```{r}
+# Convert Medical_Condition to dummy variables- as lasso can be used ony for numerical variable
+med_numeric <- model.matrix(~ Medical_Condition - 1, data = q2_data)
+
+# Add dummy variables to the main dataset
+q2_data <- cbind(q2_data, med_numeric)
+head(q2_data)
+
+medical_condition_columns <- grep("Medical_Condition", colnames(q2_data), value = TRUE)
+head(medical_condition_columns)
+```
+
+```{r}
+# Find all the column with numeric value and assign to dummy variable
+numeric_columns <- c("Length_Of_Stay", grep("Medical_Condition", colnames(q2_data), value = TRUE))
+
+q2_data <- q2_data[, !colnames(q2_data) %in% "Medical_Condition"]
+
+# Update numeric_columns to exclude Medical_Condition
+numeric_columns <- numeric_columns[numeric_columns != "Medical_Condition"]
+```
+
+```{r}
+# Convert numeric columns to matrix -for regression
+numeric_part <- apply(q2_data[, numeric_columns], 2, function(col) as.numeric(as.character(col)))
+str(numeric_part)
+
+# Convert Billing_Group - categorical to dummy variables - for numeric 
+billing_group_dummies <- model.matrix(~ Billing_Group - 1, data = q2_data)
+
+# Combine numeric columns and billing group dummy variables
+X <- cbind(numeric_part, billing_group_dummies)
+X <- apply(X, 2, function(col) as.numeric(as.character(col)))
+
+# Verify structure
+str(X)
+
+# Define the response variable
+y <- as.numeric(q2_data$Billing_Amount)
+
+# Verify structure of y
+str(y)
+```
+
+```{r}
+# Fit Lasso regression with cross-validation
+lasso_model <- cv.glmnet(X, y, alpha = 1, standardize = TRUE)
+lasso_model
+
+# Get the best lambda value
+best_lambda <- lasso_model$lambda.min 
+print(best_lambda)  # Display the optimal penalty value
+
+# Fit the final Lasso model
+final_model <- glmnet(X, y, alpha = 1, lambda = best_lambda)
+
+# Display coefficients
+print(coef(final_model))
+```
+
+```{r}
+# Extract non-zero coefficients
+nonzero_coefficients <- coef(final_model, s = best_lambda)
+nonzero_coefficients <- as.matrix(nonzero_coefficients)
+nonzero_coefficients <- nonzero_coefficients[nonzero_coefficients != 0, , drop = FALSE]
+
+# Display non-zero coefficients
+print(nonzero_coefficients)
+```
+
+```{r}
+# Extract coefficients for Billing_Group
+billing_group_effect <- nonzero_coefficients[grep("Billing_Group", rownames(nonzero_coefficients)), ]
+print(billing_group_effect)
+
+# Predict values using the final model
+predictions <- predict(final_model, newx = X, s = best_lambda)
+head(predictions)
+# Calculate residuals
+residuals <- y - predictions
+
+# Calculate Mean Squared Error (MSE)
+mse <- mean(residuals^2)
+print(paste("Mean Squared Error:", mse))
+
+# Calculate Total Sum of Squares (TSS)
+tss <- sum((y - mean(y))^2)
+
+# Calculate Residual Sum of Squares (RSS)
+rss <- sum(residuals^2)
+
+# Calculate R-squared
+r_squared <- 1 - (rss / tss)
+print(paste("R-squared:", r_squared))
+
+
+# cross validation plot for Lasso
+plot(lasso_model, xvar = "lambda", label = TRUE, main = "Lasso Coefficient Paths")
+
+```
+
+## 3. How are blood types related to certain medical conditions?
+
+```{r}
+contingency_table <- table(Health_Care$Blood_Type, Health_Care$Medical_Condition)
+print(contingency_table)
+```
+
+```{r}
+chi_square_result <- chisq.test(contingency_table)
+print(chi_square_result)
+```

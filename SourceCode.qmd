@@ -4,6 +4,7 @@ listing:
   contents: 
   - Redesign_Pooja.qmd
   - Redesign_Katie.qmd
+  - Final_Project_Sourcecode.qmd
   type: grid
   categories: true
   fields: [image,title]
